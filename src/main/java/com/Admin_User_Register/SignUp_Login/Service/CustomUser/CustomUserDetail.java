@@ -1,37 +1,35 @@
-package Process_LoginSingup.LoginSignProcess.Service.customInfo;
+package com.Admin_User_Register.SignUp_Login.Service.CustomUser;
 
-import Process_LoginSingup.LoginSignProcess.Model.Entity.Info;
+import com.Admin_User_Register.SignUp_Login.Model.Entity.User;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 
 import java.util.Collection;
 import java.util.List;
 
-public class customUserDetail implements UserDetails {
+public class CustomUserDetail implements UserDetails {
 
-    private Info userInfo;
+    private User user;
 
-    public customUserDetail(Info userInfo) {
-        this.userInfo = userInfo;
+    @Autowired
+    public CustomUserDetail(User user) {
+        this.user = user;
     }
 
     @Override
     public Collection<? extends GrantedAuthority> getAuthorities() {
-        return List.of(() ->userInfo.getRole());
-    }
-
-    public String getFullName(){
-        return userInfo.getFullName();
+        return List.of(() -> user.getRole());
     }
 
     @Override
     public String getPassword() {
-        return userInfo.getPassword();
+        return user.getPassword();
     }
 
     @Override
     public String getUsername() {
-        return userInfo.getEmail();
+        return user.getFullName();
     }
 
     @Override
@@ -53,4 +51,5 @@ public class customUserDetail implements UserDetails {
     public boolean isEnabled() {
         return true;
     }
+
 }

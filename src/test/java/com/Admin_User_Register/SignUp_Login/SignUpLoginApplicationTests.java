@@ -1,10 +1,10 @@
-package Process_LoginSingup.LoginSignProcess;
+package com.Admin_User_Register.SignUp_Login;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
 
 @SpringBootTest
-class LoginSignProcessApplicationTests {
+class SignUpLoginApplicationTests {
 
 	@Test
 	void contextLoads() {

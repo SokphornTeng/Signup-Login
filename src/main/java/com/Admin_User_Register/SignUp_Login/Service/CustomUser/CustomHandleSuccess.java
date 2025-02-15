@@ -1,4 +1,4 @@
-package Process_LoginSingup.LoginSignProcess.Service.customInfo;
+package com.Admin_User_Register.SignUp_Login.Service.CustomUser;
 
 import jakarta.servlet.ServletException;
 import jakarta.servlet.http.HttpServletRequest;
@@ -10,18 +10,18 @@ import org.springframework.stereotype.Service;
 import java.io.IOException;
 
 @Service
-public class customSuccessHandle implements AuthenticationSuccessHandler {
+public class CustomHandleSuccess implements AuthenticationSuccessHandler {
 
     @Override
     public void onAuthenticationSuccess(HttpServletRequest request, HttpServletResponse response, Authentication authentication) throws IOException, ServletException {
 
-        var authorities = authentication.getAuthorities();
-        var role = authorities.stream().map(a -> a.getAuthority()).findFirst();
-        if(role.orElse("").equals("ADMIN")){
+        var authourities = authentication.getAuthorities();
+        var role = authourities.stream().map(r -> r.getAuthority()).findFirst();
+        if(role.orElse("").equals("ADMIN")) {
             response.sendRedirect("/adminPage");
-        }else if(role.orElse("").equals("USER")){
+        } else if(role.orElse("").equals("USER")) {
             response.sendRedirect("/userPage");
-        }else {
+        } else {
             response.sendRedirect("/error");
         }
 
